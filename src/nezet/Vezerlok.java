@@ -82,7 +82,7 @@ public class Vezerlok extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Vezérlők használata");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -490,7 +490,8 @@ public class Vezerlok extends javax.swing.JFrame {
 
     private void jmtkilepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmtkilepesActionPerformed
 
-        final ImageIcon icon = new ImageIcon("..\\Vezerlok2\\exit.png");
+       // final ImageIcon icon = new ImageIcon("..\\Vezerlok2\\exit.png");
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("kepek/exit.png"));
          //JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.YES_NO_CANCEL_OPTION, icon);
          
         int result = JOptionPane.showConfirmDialog(null,"Biztosan kiakarsz lépni?", "Kilépés", JOptionPane.YES_NO_OPTION,HEIGHT,icon);
@@ -500,7 +501,7 @@ public class Vezerlok extends javax.swing.JFrame {
     }//GEN-LAST:event_jmtkilepesActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        final ImageIcon icon = new ImageIcon("..\\Vezerlok2\\exit.png");
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("kepek/exit.png"));
          //JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.YES_NO_CANCEL_OPTION, icon);
          
         int result = JOptionPane.showConfirmDialog(null,"Biztosan kiakarsz lépni?", "Kilépés", JOptionPane.YES_NO_OPTION,HEIGHT,icon);
