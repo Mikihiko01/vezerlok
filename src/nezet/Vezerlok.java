@@ -5,11 +5,11 @@
  */
 package nezet;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
@@ -19,9 +19,10 @@ import javax.swing.ListModel;
  */
 public class Vezerlok extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Vezerlok
-     */
+    String msg = "Biztosan ki akarsz lépni!!";
+    
+
+
     public Vezerlok() {
         initComponents();
     }
@@ -71,7 +72,7 @@ public class Vezerlok extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmtkilepes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -83,6 +84,11 @@ public class Vezerlok extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vezérlők használata");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTabbedPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -334,8 +340,13 @@ public class Vezerlok extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
         jMenu1.add(jSeparator1);
 
-        jMenuItem3.setText("Kilépés");
-        jMenu1.add(jMenuItem3);
+        jmtkilepes.setText("Kilépés");
+        jmtkilepes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmtkilepesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmtkilepes);
 
         jMenuBar1.add(jMenu1);
 
@@ -411,7 +422,7 @@ public class Vezerlok extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJelszotMutatActionPerformed
 
     private void btnCombobaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCombobaActionPerformed
-        
+
         jComboBox1.addItem(txtujSzak.getText());
     }//GEN-LAST:event_btnCombobaActionPerformed
 
@@ -425,7 +436,7 @@ public class Vezerlok extends javax.swing.JFrame {
 
                 if (rdbEleje.isSelected() || rdbVege.isSelected()) {
                     for (int i = 0; i < listModel.getSize(); i++) {
-                         dlm.addElement(listModel.getElementAt(i));
+                        dlm.addElement(listModel.getElementAt(i));
                     }
                 }
             }
@@ -460,22 +471,43 @@ public class Vezerlok extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void txtujSzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtujSzakActionPerformed
-      if (txtujSzak.getText().isEmpty()) {
+        if (txtujSzak.getText().isBlank()) {
             btnComboba.setEnabled(false);
-        }else{
-        btnComboba.setEnabled(true);
-        jComboBox1.addItem(txtujSzak.getText());
+        } else {
+            btnComboba.setEnabled(true);
+            jComboBox1.addItem(txtujSzak.getText());
         }
-       txtujSzak.addKeyListener(new KeyAdapter() {
-        @Override
-           public void keyPressed(KeyEvent e) {
-            if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-                txtujSzak.setText(txtujSzak.getText());
-            }
+        txtujSzak.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    txtujSzak.setText(txtujSzak.getText());
+                }
 
-           }
-       });
+            }
+        });
     }//GEN-LAST:event_txtujSzakActionPerformed
+
+    private void jmtkilepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmtkilepesActionPerformed
+
+        final ImageIcon icon = new ImageIcon("..\\Vezerlok2\\exit.png");
+         //JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.YES_NO_CANCEL_OPTION, icon);
+         
+        int result = JOptionPane.showConfirmDialog(null,"Biztosan kiakarsz lépni?", "Kilépés", JOptionPane.YES_NO_OPTION,HEIGHT,icon);
+        if (result == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jmtkilepesActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        final ImageIcon icon = new ImageIcon("..\\Vezerlok2\\exit.png");
+         //JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.YES_NO_CANCEL_OPTION, icon);
+         
+        int result = JOptionPane.showConfirmDialog(null,"Biztosan kiakarsz lépni?", "Kilépés", JOptionPane.YES_NO_OPTION,HEIGHT,icon);
+        if (result == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -535,7 +567,6 @@ public class Vezerlok extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
@@ -553,6 +584,7 @@ public class Vezerlok extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JMenuItem jmtkilepes;
     private javax.swing.JPasswordField pswJelszo;
     private javax.swing.JRadioButton rdbEleje;
     private javax.swing.JRadioButton rdbVege;
