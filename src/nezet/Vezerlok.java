@@ -5,6 +5,10 @@
  */
 package nezet;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
@@ -85,6 +89,11 @@ public class Vezerlok extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- szak választó --", "Szoftverfejlesztő", "Rendszergazda", "Grafikus" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
 
@@ -146,6 +155,12 @@ public class Vezerlok extends javax.swing.JFrame {
         });
 
         pswJelszo.setText("jPasswordField1");
+
+        txtJelszo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtJelszoActionPerformed(evt);
+            }
+        });
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -256,6 +271,11 @@ public class Vezerlok extends javax.swing.JFrame {
         jLabel3.setText("Új szak:");
 
         txtujSzak.setText("jTextField1");
+        txtujSzak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtujSzakActionPerformed(evt);
+            }
+        });
 
         btnComboba.setText("Felvesz");
         btnComboba.addActionListener(new java.awt.event.ActionListener() {
@@ -391,6 +411,7 @@ public class Vezerlok extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJelszotMutatActionPerformed
 
     private void btnCombobaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCombobaActionPerformed
+        
         jComboBox1.addItem(txtujSzak.getText());
     }//GEN-LAST:event_btnCombobaActionPerformed
 
@@ -429,6 +450,32 @@ public class Vezerlok extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_bntfejlecActionPerformed
+
+    private void txtJelszoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJelszoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtJelszoActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void txtujSzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtujSzakActionPerformed
+      if (txtujSzak.getText().isEmpty()) {
+            btnComboba.setEnabled(false);
+        }else{
+        btnComboba.setEnabled(true);
+        jComboBox1.addItem(txtujSzak.getText());
+        }
+       txtujSzak.addKeyListener(new KeyAdapter() {
+        @Override
+           public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                txtujSzak.setText(txtujSzak.getText());
+            }
+
+           }
+       });
+    }//GEN-LAST:event_txtujSzakActionPerformed
 
     /**
      * @param args the command line arguments
