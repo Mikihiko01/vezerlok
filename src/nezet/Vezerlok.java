@@ -490,24 +490,11 @@ public class Vezerlok extends javax.swing.JFrame {
 
     private void jmtkilepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmtkilepesActionPerformed
 
-       // final ImageIcon icon = new ImageIcon("..\\Vezerlok2\\exit.png");
-        ImageIcon icon = new ImageIcon(this.getClass().getResource("kepek/exit.png"));
-         //JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.YES_NO_CANCEL_OPTION, icon);
-         
-        int result = JOptionPane.showConfirmDialog(null,"Biztosan kiakarsz lépni?", "Kilépés", JOptionPane.YES_NO_OPTION,HEIGHT,icon);
-        if (result == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
+       kilepes();
     }//GEN-LAST:event_jmtkilepesActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        ImageIcon icon = new ImageIcon(this.getClass().getResource("kepek/exit.png"));
-         //JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.YES_NO_CANCEL_OPTION, icon);
-         
-        int result = JOptionPane.showConfirmDialog(null,"Biztosan kiakarsz lépni?", "Kilépés", JOptionPane.YES_NO_OPTION,HEIGHT,icon);
-        if (result == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
+        kilepes();
     }//GEN-LAST:event_formWindowClosing
 
     /**
@@ -592,4 +579,13 @@ public class Vezerlok extends javax.swing.JFrame {
     private javax.swing.JTextField txtJelszo;
     private javax.swing.JTextField txtujSzak;
     // End of variables declaration//GEN-END:variables
+
+    private void kilepes() {
+
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("kepek/exit.png"));
+        int result = JOptionPane.showConfirmDialog(null,"Biztosan kiakarsz lépni?", "Kilépés", JOptionPane.YES_NO_OPTION,HEIGHT,icon);
+        if (result == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
 }
